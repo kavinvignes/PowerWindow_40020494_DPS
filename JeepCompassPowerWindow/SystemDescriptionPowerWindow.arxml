@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="df2167f2-f5ae-47ff-adc1-e644196d7811">
+      <SHORT-NAME>ARRoot</SHORT-NAME>
+      <ELEMENTS>
+        <HW-ELEMENT/>
+        <CAN-CLUSTER>
+          <SHORT-NAME>PowerWindowLeftCanCluster</SHORT-NAME>
+          <CAN-CLUSTER-VARIANTS>
+            <CAN-CLUSTER-CONDITIONAL>
+              <PHYSICAL-CHANNELS>
+                <CAN-PHYSICAL-CHANNEL>
+                  <SHORT-NAME>PowerWindowLeftCanPhysicalChannel</SHORT-NAME>
+                  <COMM-CONNECTORS>
+                    <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ARRoot/PowerWindowLeftECUInstance/PowerWindowLeftCanCommunicationConnector</COMMUNICATION-CONNECTOR-REF>
+                    </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                  </COMM-CONNECTORS>
+                </CAN-PHYSICAL-CHANNEL>
+              </PHYSICAL-CHANNELS>
+              <PROTOCOL-NAME>Can Cluster Conditional</PROTOCOL-NAME>
+            </CAN-CLUSTER-CONDITIONAL>
+          </CAN-CLUSTER-VARIANTS>
+        </CAN-CLUSTER>
+        <ECU-INSTANCE>
+          <SHORT-NAME>PowerWindowLeftECUInstance</SHORT-NAME>
+          <COMM-CONTROLLERS>
+            <CAN-COMMUNICATION-CONTROLLER>
+              <SHORT-NAME>PowerWindowLeftCanCommunicationController</SHORT-NAME>
+            </CAN-COMMUNICATION-CONTROLLER>
+          </COMM-CONTROLLERS>
+          <CONNECTORS>
+            <CAN-COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>PowerWindowLeftCanCommunicationConnector</SHORT-NAME>
+              <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/ARRoot/PowerWindowLeftECUInstance/PowerWindowLeftCanCommunicationController</COMM-CONTROLLER-REF>
+            </CAN-COMMUNICATION-CONNECTOR>
+          </CONNECTORS>
+        </ECU-INSTANCE>
+        <FLAT-MAP>
+          <SHORT-NAME>PowerWindowLeftFlatMap</SHORT-NAME>
+          <INSTANCES>
+            <FLAT-INSTANCE-DESCRIPTOR>
+              <ECU-EXTRACT-REFERENCE-IREF>
+                <CONTEXT-ELEMENT-REF DEST="SYSTEM">/ARRoot/PowerWindowLeftSystem</CONTEXT-ELEMENT-REF>
+                <CONTEXT-ELEMENT-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowLeftSystem/PowerWindowLeftRootSoftwareComposition</CONTEXT-ELEMENT-REF>
+                <TARGET-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowLeft</TARGET-REF>
+              </ECU-EXTRACT-REFERENCE-IREF>
+            </FLAT-INSTANCE-DESCRIPTOR>
+          </INSTANCES>
+        </FLAT-MAP>
+        <SYSTEM>
+          <SHORT-NAME>PowerWindowLeftSystem</SHORT-NAME>
+          <MAPPINGS>
+            <SYSTEM-MAPPING>
+              <SHORT-NAME>PowerWindowLeftSoftwareMapping</SHORT-NAME>
+              <DATA-MAPPINGS>
+                <CLIENT-SERVER-TO-SIGNAL-MAPPING S="ClientServerToSignalMapping">
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </CLIENT-SERVER-TO-SIGNAL-MAPPING>
+              </DATA-MAPPINGS>
+              <SW-IMPL-MAPPINGS>
+                <SWC-TO-IMPL-MAPPING>
+                  <SHORT-NAME>PowerWindowLeftSwcToImpleMapping</SHORT-NAME>
+                  <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/ARRoot/PowerWindowImpFile</COMPONENT-IMPLEMENTATION-REF>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowLeftSystem/PowerWindowLeftRootSoftwareComposition</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowLeftTopLevelComposition/PowerWindowLeftSwComponentProto</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowLeftTopLevelComposition/PowerWindowLeftSwComponentProto</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                </SWC-TO-IMPL-MAPPING>
+              </SW-IMPL-MAPPINGS>
+              <SW-MAPPINGS>
+                <SWC-TO-ECU-MAPPING>
+                  <SHORT-NAME>PowerWindowLeftSwcToEcuMapping</SHORT-NAME>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowLeftSystem/PowerWindowLeftRootSoftwareComposition</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowLeftTopLevelComposition/PowerWindowLeftSwComponentProto</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowLeftTopLevelComposition/PowerWindowLeftSwComponentProto</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                  <CONTROLLED-HW-ELEMENT-REF DEST="HW-ELEMENT">/ARRoot/</CONTROLLED-HW-ELEMENT-REF>
+                  <ECU-INSTANCE-REF DEST="ECU-INSTANCE">/ARRoot/PowerWindowLeftECUInstance</ECU-INSTANCE-REF>
+                  <PROCESSING-UNIT-REF DEST="HW-ELEMENT">/ARRoot/</PROCESSING-UNIT-REF>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+          <ROOT-SOFTWARE-COMPOSITIONS>
+            <ROOT-SW-COMPOSITION-PROTOTYPE>
+              <SHORT-NAME>PowerWindowLeftRootSoftwareComposition</SHORT-NAME>
+              <FLAT-MAP-REF DEST="FLAT-MAP">/ARRoot/PowerWindowLeftFlatMap</FLAT-MAP-REF>
+              <SOFTWARE-COMPOSITION-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/ARRoot/PowerWindowLeftTopLevelComposition</SOFTWARE-COMPOSITION-TREF>
+            </ROOT-SW-COMPOSITION-PROTOTYPE>
+          </ROOT-SOFTWARE-COMPOSITIONS>
+        </SYSTEM>
+        <COMPOSITION-SW-COMPONENT-TYPE>
+          <SHORT-NAME>PowerWindowLeftTopLevelComposition</SHORT-NAME>
+          <COMPONENTS>
+            <SW-COMPONENT-PROTOTYPE UUID="">
+              <SHORT-NAME>PowerWindowLeftSwComponentProto</SHORT-NAME>
+              <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ARRoot/PowerWindowControllerType</TYPE-TREF>
+            </SW-COMPONENT-PROTOTYPE>
+          </COMPONENTS>
+          <CONNECTORS>
+            <DELEGATION-SW-CONNECTOR UUID="">
+              <SHORT-NAME>PowerWindowLeftConnectorProto</SHORT-NAME>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowLeft</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+          </CONNECTORS>
+        </COMPOSITION-SW-COMPONENT-TYPE>
+        <CAN-CLUSTER>
+          <SHORT-NAME>PowerWindowRightCanCluster</SHORT-NAME>
+          <CAN-CLUSTER-VARIANTS>
+            <CAN-CLUSTER-CONDITIONAL>
+              <PHYSICAL-CHANNELS>
+                <CAN-PHYSICAL-CHANNEL>
+                  <SHORT-NAME>PowerWindowRightCanPhysicalChannel</SHORT-NAME>
+                  <COMM-CONNECTORS>
+                    <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ARRoot/PowerWindowRightECUInstance/PowerWindowRightCanCommunicationConnector</COMMUNICATION-CONNECTOR-REF>
+                    </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                  </COMM-CONNECTORS>
+                </CAN-PHYSICAL-CHANNEL>
+              </PHYSICAL-CHANNELS>
+              <PROTOCOL-NAME>Can Cluster Conditional</PROTOCOL-NAME>
+            </CAN-CLUSTER-CONDITIONAL>
+          </CAN-CLUSTER-VARIANTS>
+        </CAN-CLUSTER>
+        <ECU-INSTANCE>
+          <SHORT-NAME>PowerWindowRightECUInstance</SHORT-NAME>
+          <COMM-CONTROLLERS>
+            <CAN-COMMUNICATION-CONTROLLER>
+              <SHORT-NAME>PowerWindowRightCanCommunicationController</SHORT-NAME>
+            </CAN-COMMUNICATION-CONTROLLER>
+          </COMM-CONTROLLERS>
+          <CONNECTORS>
+            <CAN-COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>PowerWindowRightCanCommunicationConnector</SHORT-NAME>
+              <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/ARRoot/PowerWindowRightECUInstance/PowerWindowRightCanCommunicationController</COMM-CONTROLLER-REF>
+            </CAN-COMMUNICATION-CONNECTOR>
+          </CONNECTORS>
+        </ECU-INSTANCE>
+        <FLAT-MAP>
+          <SHORT-NAME>PowerWindowRightFlatMap</SHORT-NAME>
+          <INSTANCES>
+            <FLAT-INSTANCE-DESCRIPTOR>
+              <ECU-EXTRACT-REFERENCE-IREF>
+                <CONTEXT-ELEMENT-REF DEST="SYSTEM">/ARRoot/PowerWindowRightSystem</CONTEXT-ELEMENT-REF>
+                <CONTEXT-ELEMENT-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowRightSystem/PowerWindowRightRootSoftwareComposition</CONTEXT-ELEMENT-REF>
+                <TARGET-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowRight</TARGET-REF>
+              </ECU-EXTRACT-REFERENCE-IREF>
+            </FLAT-INSTANCE-DESCRIPTOR>
+          </INSTANCES>
+        </FLAT-MAP>
+        <SYSTEM>
+          <SHORT-NAME>PowerWindowRightSystem</SHORT-NAME>
+          <MAPPINGS>
+            <SYSTEM-MAPPING>
+              <SHORT-NAME>PowerWindowRightSoftwareMapping</SHORT-NAME>
+              <DATA-MAPPINGS>
+                <CLIENT-SERVER-TO-SIGNAL-MAPPING S="ClientServerToSignalMapping">
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </CLIENT-SERVER-TO-SIGNAL-MAPPING>
+              </DATA-MAPPINGS>
+              <SW-IMPL-MAPPINGS>
+                <SWC-TO-IMPL-MAPPING>
+                  <SHORT-NAME>PowerWindowRightSwcToImpleMapping</SHORT-NAME>
+                  <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/ARRoot/PowerWindowImpFile</COMPONENT-IMPLEMENTATION-REF>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowRightSystem/PowerWindowRightRootSoftwareComposition</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowRightTopLevelComposition/PowerWindowRightSwComponentProto</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowRightTopLevelComposition/PowerWindowRightSwComponentProto</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                </SWC-TO-IMPL-MAPPING>
+              </SW-IMPL-MAPPINGS>
+              <SW-MAPPINGS>
+                <SWC-TO-ECU-MAPPING>
+                  <SHORT-NAME>PowerWindowRightSwcToEcuMapping</SHORT-NAME>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/ARRoot/PowerWindowRightSystem/PowerWindowRightRootSoftwareComposition</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowRightTopLevelComposition/PowerWindowRightSwComponentProto</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/ARRoot/PowerWindowRightTopLevelComposition/PowerWindowRightSwComponentProto</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                  <CONTROLLED-HW-ELEMENT-REF DEST="HW-ELEMENT">/ARRoot/</CONTROLLED-HW-ELEMENT-REF>
+                  <ECU-INSTANCE-REF DEST="ECU-INSTANCE">/ARRoot/PowerWindowRightECUInstance</ECU-INSTANCE-REF>
+                  <PROCESSING-UNIT-REF DEST="HW-ELEMENT">/ARRoot/</PROCESSING-UNIT-REF>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+          <ROOT-SOFTWARE-COMPOSITIONS>
+            <ROOT-SW-COMPOSITION-PROTOTYPE>
+              <SHORT-NAME>PowerWindowRightRootSoftwareComposition</SHORT-NAME>
+              <FLAT-MAP-REF DEST="FLAT-MAP">/ARRoot/PowerWindowRightFlatMap</FLAT-MAP-REF>
+              <SOFTWARE-COMPOSITION-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/ARRoot/PowerWindowRightTopLevelComposition</SOFTWARE-COMPOSITION-TREF>
+            </ROOT-SW-COMPOSITION-PROTOTYPE>
+          </ROOT-SOFTWARE-COMPOSITIONS>
+        </SYSTEM>
+        <COMPOSITION-SW-COMPONENT-TYPE>
+          <SHORT-NAME>PowerWindowRightTopLevelComposition</SHORT-NAME>
+          <COMPONENTS>
+            <SW-COMPONENT-PROTOTYPE UUID="">
+              <SHORT-NAME>PowerWindowRightSwComponentProto</SHORT-NAME>
+              <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/ARRoot/PowerWindowControllerType</TYPE-TREF>
+            </SW-COMPONENT-PROTOTYPE>
+          </COMPONENTS>
+          <CONNECTORS>
+            <DELEGATION-SW-CONNECTOR UUID="">
+              <SHORT-NAME>PowerWindowRightConnectorProto</SHORT-NAME>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowRight</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+          </CONNECTORS>
+        </COMPOSITION-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="03d22d2d-42c4-42bf-8b24-169b242a56ea">
+      <SHORT-NAME>ARRoot</SHORT-NAME>
+      <ELEMENTS>
+        <TRIGGER-INTERFACE>
+          <TRIGGERS>
+            <TRIGGER>
+              <SHORT-NAME>PowerWindowLeftTrigger</SHORT-NAME>
+            </TRIGGER>
+            <TRIGGER>
+              <SHORT-NAME>PowerWindowRightTrigger</SHORT-NAME>
+            </TRIGGER>
+          </TRIGGERS>
+        </TRIGGER-INTERFACE>
+        <IMPLEMENTATION-DATA-TYPE>
+          <SHORT-NAME>Float</SHORT-NAME>
+        </IMPLEMENTATION-DATA-TYPE>
+        <APPLICATION-SW-COMPONENT-TYPE>
+          <SHORT-NAME>PowerWindowControllerType</SHORT-NAME>
+          <PORTS>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>PowerWindowLeft</SHORT-NAME>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>PowerWindowRight</SHORT-NAME>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+              <SHORT-NAME>PowerWindowControllerIB</SHORT-NAME>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY>
+                  <SHORT-NAME>PowerWindowLeftRunnable</SHORT-NAME>
+                  <SERVER-CALL-POINTS>
+                    <SYNCHRONOUS-SERVER-CALL-POINT>
+                      <OPERATION-IREF S="">
+                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowLeft</CONTEXT-R-PORT-REF>
+                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/ARRoot/PowerWindowLeftCSIF/</TARGET-REQUIRED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </SYNCHRONOUS-SERVER-CALL-POINT>
+                  </SERVER-CALL-POINTS>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY>
+                  <SHORT-NAME>PowerWindowRightRunnable</SHORT-NAME>
+                  <SERVER-CALL-POINTS>
+                    <SYNCHRONOUS-SERVER-CALL-POINT>
+                      <OPERATION-IREF S="">
+                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ARRoot/PowerWindowControllerType/PowerWindowRight</CONTEXT-R-PORT-REF>
+                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/ARRoot/PowerWindowRightCSIF/</TARGET-REQUIRED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </SYNCHRONOUS-SERVER-CALL-POINT>
+                  </SERVER-CALL-POINTS>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </APPLICATION-SW-COMPONENT-TYPE>
+        <SWC-IMPLEMENTATION>
+          <SHORT-NAME>PowerWindowImpFile</SHORT-NAME>
+          <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+          <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/ARRoot/PowerWindowControllerType/PowerWindowControllerIB</BEHAVIOR-REF>
+        </SWC-IMPLEMENTATION>
+        <CLIENT-SERVER-INTERFACE>
+          <SHORT-NAME>PowerWindowLeftCSIF</SHORT-NAME>
+          <OPERATIONS>
+            <CLIENT-SERVER-OPERATION>
+              <ARGUMENTS>
+                <ARGUMENT-DATA-PROTOTYPE>
+                  <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ARRoot/Float</TYPE-TREF>
+                  <DIRECTION>OUT</DIRECTION>
+                </ARGUMENT-DATA-PROTOTYPE>
+              </ARGUMENTS>
+            </CLIENT-SERVER-OPERATION>
+          </OPERATIONS>
+        </CLIENT-SERVER-INTERFACE>
+        <CLIENT-SERVER-INTERFACE>
+          <SHORT-NAME>PowerWindowRightCSIF</SHORT-NAME>
+          <OPERATIONS>
+            <CLIENT-SERVER-OPERATION>
+              <ARGUMENTS>
+                <ARGUMENT-DATA-PROTOTYPE>
+                  <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ARRoot/Float</TYPE-TREF>
+                  <DIRECTION>OUT</DIRECTION>
+                </ARGUMENT-DATA-PROTOTYPE>
+              </ARGUMENTS>
+            </CLIENT-SERVER-OPERATION>
+          </OPERATIONS>
+        </CLIENT-SERVER-INTERFACE>
+        <SENSOR-ACTUATOR-SW-COMPONENT-TYPE>
+          <SHORT-NAME>PowerWindowSwType</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>PowerWindowLeft</SHORT-NAME>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>PowerWindowRight</SHORT-NAME>
+            </P-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+              <SHORT-NAME>PowerWindowIB</SHORT-NAME>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY>
+                  <SHORT-NAME>PowerWindowLeftOp</SHORT-NAME>
+                  <EXTERNAL-TRIGGERING-POINTS>
+                    <EXTERNAL-TRIGGERING-POINT>
+                      <TRIGGER-IREF>
+                        <P-TRIGGER-IN-ATOMIC-SWC-TYPE-INSTANCE-REF>
+                          <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARRoot/PowerWindowSwType/PowerWindowLeft</CONTEXT-P-PORT-REF>
+                          <TARGET-TRIGGER-REF DEST="TRIGGER">/ARRoot//PowerWindowLeftTrigger</TARGET-TRIGGER-REF>
+                        </P-TRIGGER-IN-ATOMIC-SWC-TYPE-INSTANCE-REF>
+                      </TRIGGER-IREF>
+                    </EXTERNAL-TRIGGERING-POINT>
+                  </EXTERNAL-TRIGGERING-POINTS>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY>
+                  <SHORT-NAME>PowerWindowRightOp</SHORT-NAME>
+                  <EXTERNAL-TRIGGERING-POINTS>
+                    <EXTERNAL-TRIGGERING-POINT>
+                      <TRIGGER-IREF>
+                        <P-TRIGGER-IN-ATOMIC-SWC-TYPE-INSTANCE-REF>
+                          <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARRoot/PowerWindowSwType/PowerWindowRight</CONTEXT-P-PORT-REF>
+                          <TARGET-TRIGGER-REF DEST="TRIGGER">/ARRoot//PowerWindowRightTrigger</TARGET-TRIGGER-REF>
+                        </P-TRIGGER-IN-ATOMIC-SWC-TYPE-INSTANCE-REF>
+                      </TRIGGER-IREF>
+                    </EXTERNAL-TRIGGERING-POINT>
+                  </EXTERNAL-TRIGGERING-POINTS>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </SENSOR-ACTUATOR-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
